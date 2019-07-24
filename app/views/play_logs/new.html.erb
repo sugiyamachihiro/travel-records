@@ -1,0 +1,51 @@
+<h1>旅を記録する</h1>
+
+<%= link_to "新しいゲームの登録をする", new_game_path %>
+
+<%= form_for @play_log, url:play_logs_path do |f| %>
+
+	<div class="container">
+		<div class="">
+			<div class="row">
+
+				<div class="col-lg-10 col-lg-offset-1">
+
+					<div class="filed", style="font-size: 24px; padding-bottom: 30px;">
+						<div class="col-md-1"></div>
+						<div class="col-md-4">
+							<%= f.label :game, "ゲーム" %>
+						</div>
+						<div class="col-md-6">
+							<%= f.select :game_id, Game.all.map{|g| [g.game, g.id]}, { include_blank: true }, { class: 'js-searchable'} %>
+						</div><br>
+					</div>
+
+					<div class="filed", style="font-size: 24px; padding-bottom: 40px;">
+						<div class="col-md-1"></div>
+						<div class="col-md-4">
+							<%= f.label :title, "記事タイトル" %>
+						</div>
+						<div class="col-md-6">
+							<%= f.text_field :title %>
+						</div>
+					</div>
+
+					<div class="filed", style="font-size: 24px; padding-bottom: 40px;">
+						<div class="col-md-1"></div>
+						<div class="col-md-4">
+							<%= f.label :introduction, "記事タイトル" %>
+						</div>
+						<div class="col-md-6">
+							<%= f.text_field :introduction %>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<%= f.submit "記録を残す", class: "btn btn-secondary", :style=>"background-color: #777;color: white;" %><br>
+
+<% end %>
